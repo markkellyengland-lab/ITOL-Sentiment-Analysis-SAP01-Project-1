@@ -19,8 +19,15 @@ def predict_sentiment(texts, batch_size=32):
         results=classifier(batch, truncation=true, max_length=512)
         predictions.extend(results)
     return predictions
-        
-    texts - dataset['text']
+
+#Get predictions
+print("Make predictions on 1000 reviews")
+texts = dataset['text']
+predictions = predict_sentiment(texts)
+
+#Convert predictions to binary (POSITIVE=1, NEGATIVE=0)
+pred_labels = [1 if p['label'] ==  'POSITIVE' else 0 for p in predictions]
+true_labels = dataset['label']
 
 
 #Test it with a simple example
